@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuestBrief.ai - Stop Researching. Start Connecting.</title>
+    <style>
+        /* Basic Reset & Font */
+        :root {
+            --primary-color: #4A90E2; /* A nice blue */
+            --dark-text: #333;
+            --light-text: #666;
+            --background-light: #f8f9fa;
+            --background-white: #ffffff;
+            --border-color: #e0e0e0;
+            --success-color: #28a745;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--background-white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1.2; color: var(--dark-text); }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; line-height: 1.3; color: var(--dark-text); text-align: center;}
+        h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--dark-text); }
+        p { margin-bottom: 1rem; color: var(--light-text); }
+        .sub-headline { font-size: 1.2rem; color: var(--light-text); margin-bottom: 2rem; }
+        .text-center { text-align: center; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #357ABD; /* Darker blue */
+        }
+
+        /* Forms */
+        input[type="email"] {
+            padding: 12px;
+            margin-right: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 250px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--background-white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+         nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--background-light);
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            padding-top: 100px; /* Extra padding for hero */
+            padding-bottom: 100px;
+        }
+
+        #hero .cta-form {
+            margin-top: 2rem;
+        }
+
+        #hero .social-proof {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* Problem & Solution Sections */
+        #problem .columns, #solution .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        #problem .columns div, #solution .steps div {
+            background: var(--background-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+         #solution .steps div h3 {
+             color: var(--primary-color);
+         }
+
+        /* Features Section */
+        #features .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        #features .feature-box {
+            background: var(--background-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        /* Pricing Section */
+        #pricing .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center; /* Center items if they don't fill the row */
+        }
+
+        #pricing .pricing-tier {
+            background: var(--background-white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        #pricing .pricing-tier.popular {
+            border-top: 4px solid var(--success-color); /* Highlight popular */
+            position: relative; /* For the badge */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+         #pricing .pricing-tier.popular::before {
+             content: "Most Popular";
+             position: absolute;
+             top: -15px;
+             left: 50%;
+             transform: translateX(-50%);
+             background-color: var(--success-color);
+             color: white;
+             padding: 5px 10px;
+             border-radius: 15px;
+             font-size: 0.8rem;
+             font-weight: bold;
+         }
+
+        #pricing .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        #pricing .billing-cycle {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+
+        #pricing ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        #pricing ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 20px;
+            position: relative;
+        }
+         #pricing ul li::before {
+             content: '✓'; /* Checkmark */
+             color: var(--success-color);
+             position: absolute;
+             left: 0;
+             font-weight: bold;
+         }
+
+        /* Final CTA Section */
+        #cta {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            text-align: center;
+        }
+
+        #cta h2, #cta p, #cta .sub-headline {
+            color: var(--background-white);
+        }
+
+        #cta input[type="email"] {
+            background-color: var(--background-white);
+            color: var(--dark-text);
+        }
+
+        #cta .btn {
+            background-color: var(--background-white);
+            color: var(--primary-color);
+        }
+         #cta .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        #cta .final-text {
+             margin-top: 1rem;
+             font-size: 0.9rem;
+             opacity: 0.8;
+         }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-light);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+
+            nav .container { flex-direction: column; gap: 10px; }
+            nav ul { justify-content: center; }
+            nav .btn { display: none; } /* Hide button on mobile nav */
+
+            #problem .columns, #solution .steps {
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+
+            #features .feature-grid {
+                 grid-template-columns: 1fr; /* Stack features */
+            }
+
+            #pricing .pricing-grid {
+                 grid-template-columns: 1fr; /* Stack pricing tiers */
+                 max-width: 400px; /* Limit width on mobile */
+                 margin: 0 auto;
+            }
+
+            input[type="email"] {
+                min-width: unset; /* Remove min-width */
+                width: 100%;
+                margin-bottom: 10px; /* Add space below */
+                margin-right: 0;
+            }
+
+            .cta-form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+             .cta-form .btn {
+                 width: 100%;
+             }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">GuestBrief.ai</a>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <a href="#cta" class="btn nav-cta-button">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Stop Researching. Start Connecting.</h1>
+            <p class="sub-headline">
+                The AI assistant for serious podcasters. We build your pre-interview "Genius Brief" in 10 minutes and create the "Promo Kit" that turns your guest into your #1 marketer.
+            </p>
+            <form class="cta-form" id="hero-waitlist-form">
+                <input type="email" id="hero-email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn hero-cta-button">Get Early Access</button>
+            </form>
+            <p class="social-proof">No credit card required. Join the private waitlist for a 50% lifetime discount.</p>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div class="container">
+            <h2>The Podcast "Workflow" Is a Grind.</h2>
+            <p class="sub-headline text-center">You're trapped between two painful problems that kill your show's growth.</p>
+            <div class="columns">
+                <div>
+                    <h3>The Research Trap</h3>
+                    <p>You spend <strong>4 hours</strong> on manual guest prep—skimming blogs, listening to their other interviews, scrolling LinkedIn—just to end up asking the same 5 questions they've heard all week. Your prep is exhausting, and the final interview is... <em>boring</em>.</p>
+                </div>
+                <div>
+                    <h3>The Promotion Black Hole</h3>
+                    <p>You launch the episode, send your guest a "thank you" email with a link, and... <em>nothing</em>. Your single biggest marketing opportunity (their entire audience) is completely wasted because you didn't make it easy for them to share.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>GuestBrief.ai Makes You a Genius Host.</h2>
+            <p class="sub-headline text-center">We are not *another* show notes tool. We are your strategic partner, fixing your workflow in two simple steps.</p>
+            <div class="steps">
+                <div>
+                    <h3>Step 1: The "Genius Brief"</h3>
+                    <p><strong>Before you record,</strong> paste your guest's LinkedIn or website URL. Our AI builds a 1-Page "Genius Brief"—analyzing their history, identifying "Tired Topics," and generating novel, deep-cut questions that lead to <em>that</em> "wow" moment.</p>
+                </div>
+                <div>
+                    <h3>Step 2: The "Promo Kit"</h3>
+                    <p><strong>After you record,</strong> upload your audio. Our AI creates the "Guest Promo Kit"—perfect show notes, a full transcript, and a "vanity package" of branded quote cards and audiograms, all pre-written into a "thank you" email that your guest is <em>excited</em> to share.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>A Toolkit for Professional Podcasters.</h2>
+            <p class="sub-headline text-center">All the tools you need. None of the clutter.</p>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>AI Guest Briefing</h3>
+                    <p>Turn a single URL into a 1-page tactical doc. We find their bio, recent activity, and social links so you can build instant rapport.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Podcast History Analysis</h3>
+                    <p>Our AI finds your guest's other podcast appearances and tells you what they *always* talk about, so you can go deeper and create a truly unique episode.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>"Tired Topics" Identifier</h3>
+                    <p>Stop asking the same boring questions. Know what your guest is tired of talking about *before* you hit record.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Novel Question Generator</h3>
+                    <p>The "secret weapon." Based on our analysis, we generate 5-10 smart, deep-cut questions that your guest has *never* been asked before.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>The "Vanity" Promo Kit</h3>
+                    <p>Turn guests into promoters. We auto-generate beautiful, branded quote cards and a 60-second "viral" audiogram clip. This is the "vanity package" they will be proud to share.</p>
+                </div>
+                 <div class="feature-box">
+                    <h3>Pre-Written "Shareable" Emails</h3>
+                    <p>We draft the perfect "thank you" email to your guest, with all their promo assets and share links included. Just copy, paste, and send.</p>
+                </div>
+                 <div class="feature-box">
+                    <h3>AI-Powered Show Notes</h3>
+                    <p>Of course, we do the essentials. Get 5 title options, an SEO-ready summary, bulleted key takeaways, and time-stamped chapters in seconds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2>Simple Pricing for Serious Creators.</h2>
+            <p class="sub-headline text-center">
+                No complex "AI credits." No per-minute fees. Just simple, predictable pricing that scales with your show.<br>
+                <em>Pricing is not final. Join the waitlist for a <strong>50% lifetime discount</strong> on your first year.</em>
+            </p>
+            <div class="pricing-grid">
+                <div class="pricing-tier">
+                    <h3>Solo Host</h3>
+                    <div class="price">$29<span style="font-size: 1rem; color: var(--light-text);">/mo</span></div>
+                    <div class="billing-cycle">Billed annually, or $35/mo</div>
+                    <ul>
+                        <li><strong>5</strong> "Brief & Promo Kits" per month</li>
+                        <li>AI Guest Briefings</li>
+                        <li>Novel Question Generator</li>
+                        <li>Full AI Promo Kit</li>
+                        <li>(Perfect for the weekly show)</li>
+                    </ul>
+                    <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                </div>
+                <div class="pricing-tier popular">
+                    <h3>Pro Host</h3>
+                    <div class="price">$59<span style="font-size: 1rem; color: var(--light-text);">/mo</span></div>
+                    <div class="billing-cycle">Billed annually, or $69/mo</div>
+                    <ul>
+                        <li><strong>15</strong> "Brief & Promo Kits" per month</li>
+                        <li><em>Everything in Solo, plus:</em></li>
+                        <li><strong>Custom Branding:</strong> Add your logo</li>
+                    </ul>
+                     <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                </div>
+                <div class="pricing-tier">
+                    <h3>Agency / Network</h3>
+                    <div class="price">$129<span style="font-size: 1rem; color: var(--light-text);">/mo</span></div>
+                    <div class="billing-cycle">Billed annually, or $149/mo</div>
+                    <ul>
+                        <li><strong>35</strong> "Brief & Promo Kits" per month</li>
+                        <li><em>Everything in Pro, plus:</em></li>
+                        <li><strong>3 Team Seats</strong></li>
+                        <li><strong>Client Workspaces</strong></li>
+                    </ul>
+                     <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container">
+            <h2>Stop Sounding Like Everyone Else.</h2>
+            <p class="sub-headline">
+                Your guests deserve a better interview. Your audience deserves a better show. And you deserve to get your time back. Be the first to try GuestBrief.ai.
+            </p>
+            <form class="cta-form" id="final-waitlist-form">
+                <input type="email" id="final-email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Join the Waitlist</button>
+            </form>
+            <p class="final-text">
+                We are launching our private beta soon. Waitlist members get priority access and a <strong>50% lifetime discount.</strong>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 GuestBrief.ai | A tool for podcasters, by podcasters.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">X/Twitter</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for all anchor links pointing to an ID on the same page
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Check if the link is just a placeholder or actually points to an ID
+                const hrefAttribute = this.getAttribute('href');
+                if (hrefAttribute && hrefAttribute !== '#') {
+                    const targetElement = document.querySelector(hrefAttribute);
+                    if (targetElement) {
+                        e.preventDefault(); // Prevent default anchor click behavior
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                } else if (hrefAttribute === '#') {
+                     e.preventDefault(); // Prevent jump to top for empty hash links
+                     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+                }
+            });
+        });
+
+        // Handle the waitlist forms (Hero and Final CTA)
+        function handleWaitlistSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission (page reload)
+            const emailInput = event.target.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+                // In a real application, you would send this email to your backend here.
+                console.log('Waitlist signup attempt:', emailInput.value);
+                alert('Thank you for joining the waitlist! We will notify you soon.');
+                emailInput.value = ''; // Clear the input field after submission
+            } else {
+                 alert('Please enter a valid email address.');
+            }
+        }
+
+        const heroForm = document.getElementById('hero-waitlist-form');
+        const finalForm = document.getElementById('final-waitlist-form');
+
+        if (heroForm) {
+            heroForm.addEventListener('submit', handleWaitlistSubmit);
+        }
+        if (finalForm) {
+            finalForm.addEventListener('submit', handleWaitlistSubmit);
+        }
+
+        // Make buttons with specific classes also scroll to the CTA section
+         document.querySelectorAll('.nav-cta-button, .hero-cta-button, .pricing-cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetElement = document.querySelector('#cta');
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+         });
+
+    </script>
+
+</body>
+</html>
