@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuestBrief.ai - Stop Researching. Start Connecting.</title>
+    <title>GuestBrief.ai - Elevate Your Podcast Interviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic Reset & Font */
+        /* Refined Color Palette & Font */
         :root {
-            --primary-color: #4A90E2; /* A nice blue */
-            --dark-text: #333;
-            --light-text: #666;
-            --background-light: #f8f9fa;
+            --primary-color: #0D9488; /* Teal */
+            --primary-dark: #0A7D68;
+            --accent-color: #6D28D9; /* Purple */
+            --dark-text: #1F2937; /* Dark Gray */
+            --medium-text: #4B5563; /* Medium Gray */
+            --light-text: #6B7280; /* Light Gray */
+            --background-light: #F9FAFB; /* Very Light Gray */
             --background-white: #ffffff;
-            --border-color: #e0e0e0;
-            --success-color: #28a745;
+            --border-color: #E5E7EB;
+            --success-color: #10B981; /* Green */
         }
 
         *, *::before, *::after {
@@ -23,68 +29,82 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            line-height: 1.6;
-            color: var(--dark-text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--medium-text);
             background-color: var(--background-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Container */
         .container {
-            max-width: 1100px;
+            max-width: 1140px; /* Slightly wider */
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Typography */
-        h1 { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1.2; color: var(--dark-text); }
-        h2 { font-size: 2rem; margin-bottom: 1.5rem; line-height: 1.3; color: var(--dark-text); text-align: center;}
-        h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--dark-text); }
-        p { margin-bottom: 1rem; color: var(--light-text); }
-        .sub-headline { font-size: 1.2rem; color: var(--light-text); margin-bottom: 2rem; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; color: var(--dark-text); font-weight: 700; }
+        h2 { font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.3; color: var(--dark-text); font-weight: 600; text-align: center; }
+        h3 { font-size: 1.25rem; margin-bottom: 0.8rem; color: var(--dark-text); font-weight: 600; }
+        p { margin-bottom: 1.2rem; color: var(--medium-text); }
+        .sub-headline { font-size: 1.15rem; color: var(--light-text); margin-bottom: 2.5rem; max-width: 700px; margin-left:auto; margin-right: auto;}
         .text-center { text-align: center; }
 
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 14px 30px; /* Slightly larger */
             background-color: var(--primary-color);
             color: var(--background-white);
             border: none;
-            border-radius: 5px;
+            border-radius: 6px; /* Slightly rounder */
             text-decoration: none;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
-            background-color: #357ABD; /* Darker blue */
+            background-color: var(--primary-dark);
+            transform: translateY(-2px); /* Subtle lift */
         }
+         .btn:active {
+             transform: translateY(0px);
+         }
 
         /* Forms */
         input[type="email"] {
-            padding: 12px;
+            padding: 14px; /* Match button */
             margin-right: 10px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 1rem;
-            min-width: 250px;
+            min-width: 300px; /* Wider input */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2); /* Teal focus ring */
         }
 
         /* Navigation */
         nav {
-            background-color: var(--background-white);
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            backdrop-filter: blur(8px); /* Blur effect */
         }
 
         nav .container {
@@ -94,8 +114,8 @@
         }
 
         nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 700; /* Bolder logo */
             color: var(--dark-text);
             text-decoration: none;
         }
@@ -103,12 +123,12 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 25px; /* More spacing */
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--light-text);
+            color: var(--medium-text);
             font-weight: 500;
             transition: color 0.3s ease;
         }
@@ -119,49 +139,114 @@
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: 90px 0; /* More padding */
         }
 
-        section:nth-child(even) {
-            background-color: var(--background-light);
-        }
+        section.bg-light {
+             background-color: var(--background-light);
+         }
+         section.bg-dark {
+             background-color: var(--dark-text);
+             color: var(--background-light);
+         }
+         section.bg-dark h2, section.bg-dark p {
+             color: var(--background-white);
+         }
 
         /* Hero Section */
         #hero {
             text-align: center;
-            padding-top: 100px; /* Extra padding for hero */
+            padding-top: 100px;
             padding-bottom: 100px;
+            background: linear-gradient(180deg, rgba(255,255,255,1) 70%, rgba(249,250,251,1) 100%); /* Subtle gradient */
         }
 
         #hero .cta-form {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+            display: flex; /* Keep side-by-side on desktop */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrap on mobile */
         }
 
         #hero .social-proof {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             font-size: 0.9rem;
             color: var(--light-text);
         }
+        #hero .hero-image-container {
+            margin-top: 4rem;
+            margin-bottom: -150px; /* Pull image down into next section slightly */
+            position: relative;
+            z-index: 10;
+        }
+         #hero img.hero-image {
+             max-width: 600px;
+             width: 100%;
+             border-radius: 8px;
+             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+         }
 
-        /* Problem & Solution Sections */
-        #problem .columns, #solution .steps {
+
+        /* Problem & Solution Sections (with Images) */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px; /* More gap */
+            align-items: center;
+        }
+        .split-section .text-content {
+            /* Text takes up one column */
+        }
+        .split-section .image-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+         /* Reverse order for visual flow */
+         #solution .split-section {
+             grid-template-columns: 1fr 1fr; /* Image first on solution */
+         }
+         #solution .split-section .text-content { order: 2; }
+         #solution .split-section .image-content { order: 1; }
+
+         /* Make steps vertical */
+         #solution .steps {
+             margin-top: 3rem;
+             display: flex;
+             flex-direction: column;
+             gap: 20px;
+         }
+          #solution .steps h3 {
+              color: var(--primary-color);
+              margin-bottom: 0.5rem;
+          }
+
+        /* Dashboard Mockup Showcase */
+        .dashboard-showcase {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: start;
+            margin-top: 4rem;
         }
-
-        #problem .columns div, #solution .steps div {
-            background: var(--background-white);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-         #solution .steps div h3 {
-             color: var(--primary-color);
+        .dashboard-mockup img {
+             max-width: 100%;
+             border-radius: 8px;
+             border: 1px solid var(--border-color);
+             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+         }
+         .dashboard-mockup h4 {
+             text-align: center;
+             margin-top: 1rem;
+             color: var(--dark-text);
+             font-weight: 500;
          }
 
         /* Features Section */
+        #features {
+             padding-top: 180px; /* Extra padding due to overlapping hero image */
+         }
         #features .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -170,33 +255,70 @@
 
         #features .feature-box {
             background: var(--background-white);
-            padding: 25px;
+            padding: 30px; /* More padding */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-color);
+            /* border-top: 4px solid var(--primary-color); Removed border, using icon instead */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        #features .feature-box:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+         }
+
+         #features .feature-icon {
+             display: inline-block;
+             background-color: rgba(13, 148, 136, 0.1); /* Light Teal background */
+             color: var(--primary-color);
+             padding: 15px;
+             border-radius: 50%;
+             margin-bottom: 1.5rem;
+             width: 60px; /* Fixed size */
+             height: 60px;
+             display: flex; /* Center icon inside */
+             justify-content: center;
+             align-items: center;
+             margin-left: auto; /* Center horizontally */
+             margin-right: auto;
+         }
+          #features .feature-icon svg {
+              width: 28px;
+              height: 28px;
+          }
 
         /* Pricing Section */
         #pricing .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider columns */
             gap: 30px;
-            justify-content: center; /* Center items if they don't fill the row */
+            justify-content: center;
         }
 
         #pricing .pricing-tier {
             background: var(--background-white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 35px; /* More padding */
+            border-radius: 10px; /* Rounder */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
             text-align: center;
             border: 1px solid var(--border-color);
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack items vertically */
+            height: 100%; /* Make tiers equal height */
         }
+         #pricing .pricing-tier ul {
+             flex-grow: 1; /* Make list take available space */
+             list-style: none;
+             margin: 2rem 0;
+             text-align: left;
+             padding: 0; /* Remove default padding */
+         }
 
         #pricing .pricing-tier.popular {
-            border-top: 4px solid var(--success-color); /* Highlight popular */
-            position: relative; /* For the badge */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent-color); /* Purple border */
+            position: relative;
+            transform: scale(1.03); /* Slightly larger */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
          #pricing .pricing-tier.popular::before {
@@ -205,17 +327,17 @@
              top: -15px;
              left: 50%;
              transform: translateX(-50%);
-             background-color: var(--success-color);
+             background-color: var(--accent-color);
              color: white;
-             padding: 5px 10px;
+             padding: 5px 12px;
              border-radius: 15px;
              font-size: 0.8rem;
-             font-weight: bold;
+             font-weight: 600;
          }
 
         #pricing .price {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-size: 2.8rem; /* Larger price */
+            font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--dark-text);
         }
@@ -223,31 +345,39 @@
         #pricing .billing-cycle {
             font-size: 0.9rem;
             color: var(--light-text);
-            margin-bottom: 1.5rem;
-        }
-
-        #pricing ul {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
+            margin-bottom: 2rem; /* More space */
         }
 
         #pricing ul li {
-            margin-bottom: 0.8rem;
-            padding-left: 20px;
+            margin-bottom: 1rem; /* More space */
+            padding-left: 25px; /* Indent more */
             position: relative;
         }
          #pricing ul li::before {
-             content: '✓'; /* Checkmark */
-             color: var(--success-color);
+             content: '✓';
+             color: var(--primary-color); /* Teal checkmark */
              position: absolute;
              left: 0;
              font-weight: bold;
+             font-size: 1.1rem;
          }
+         #pricing .pricing-tier .btn {
+            margin-top: auto; /* Push button to bottom */
+            background-color: var(--accent-color); /* Purple button for pricing */
+         }
+         #pricing .pricing-tier .btn:hover {
+              background-color: #581C87; /* Darker Purple */
+          }
+           #pricing .pricing-tier.popular .btn {
+                background-color: var(--accent-color);
+            }
+             #pricing .pricing-tier.popular .btn:hover {
+                  background-color: #581C87;
+              }
 
         /* Final CTA Section */
         #cta {
-            background-color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); /* Gradient background */
             color: var(--background-white);
             text-align: center;
         }
@@ -257,81 +387,109 @@
         }
 
         #cta input[type="email"] {
-            background-color: var(--background-white);
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
             color: var(--dark-text);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) inset;
         }
 
         #cta .btn {
             background-color: var(--background-white);
-            color: var(--primary-color);
+            color: var(--accent-color); /* Purple text */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
          #cta .btn:hover {
             background-color: #f0f0f0;
-        }
+         }
 
         #cta .final-text {
-             margin-top: 1rem;
+             margin-top: 1.5rem;
              font-size: 0.9rem;
-             opacity: 0.8;
+             opacity: 0.9;
          }
 
         /* Footer */
         footer {
-            background-color: var(--background-light);
+            background-color: var(--dark-text); /* Dark footer */
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             font-size: 0.9rem;
             color: var(--light-text);
         }
 
+        footer p { color: var(--light-text);}
+
         footer .social-links a {
-            margin: 0 10px;
+            margin: 0 12px;
             color: var(--light-text);
             text-decoration: none;
             transition: color 0.3s ease;
         }
         footer .social-links a:hover {
-            color: var(--primary-color);
+            color: var(--primary-color); /* Teal hover */
         }
 
 
-        /* Responsive Design */
+        /* Responsive Design Adjustments */
+        @media (max-width: 992px) {
+             .split-section {
+                 grid-template-columns: 1fr; /* Stack on medium screens too */
+                 gap: 40px;
+             }
+             /* Ensure image is always below text on mobile */
+             #problem .split-section .image-content { order: 2; }
+             #solution .split-section .image-content { order: 1; } /* Keep image first in solution */
+             #solution .split-section .text-content { order: 2; }
+
+             .dashboard-showcase {
+                 grid-template-columns: 1fr;
+             }
+             #hero .hero-image-container {
+                 margin-bottom: -100px; /* Less overlap */
+             }
+             #features {
+                 padding-top: 130px;
+             }
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.8rem; }
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.9rem; }
 
-            nav .container { flex-direction: column; gap: 10px; }
-            nav ul { justify-content: center; }
-            nav .btn { display: none; } /* Hide button on mobile nav */
+            nav .container { flex-direction: row; } /* Keep row layout but maybe hide links */
+            nav ul { display: none; } /* Hide links on mobile */
+            /* You might add a burger menu icon here later */
+            nav .btn { display: none; }
 
-            #problem .columns, #solution .steps {
-                grid-template-columns: 1fr; /* Stack columns */
+            section { padding: 60px 0; } /* Less padding */
+            #hero { padding-top: 80px; padding-bottom: 80px;}
+
+            #hero .cta-form {
+                flex-direction: column; /* Stack form elements */
             }
-
-            #features .feature-grid {
-                 grid-template-columns: 1fr; /* Stack features */
-            }
-
-            #pricing .pricing-grid {
-                 grid-template-columns: 1fr; /* Stack pricing tiers */
-                 max-width: 400px; /* Limit width on mobile */
-                 margin: 0 auto;
-            }
-
-            input[type="email"] {
-                min-width: unset; /* Remove min-width */
-                width: 100%;
-                margin-bottom: 10px; /* Add space below */
-                margin-right: 0;
-            }
-
-            .cta-form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-             .cta-form .btn {
+             input[type="email"] {
+                 min-width: unset;
                  width: 100%;
+                 margin-bottom: 10px;
+                 margin-right: 0;
+             }
+              .cta-form .btn {
+                  width: 100%;
+              }
+
+             #pricing .pricing-grid {
+                  grid-template-columns: 1fr;
+                  max-width: 400px;
+                  margin: 0 auto;
+             }
+              #pricing .pricing-tier.popular {
+                 transform: scale(1); /* No scale effect on mobile */
+             }
+             #hero .hero-image-container {
+                 margin-top: 3rem;
+                 margin-bottom: -60px; /* Even less overlap */
+             }
+             #features {
+                 padding-top: 100px;
              }
         }
 
@@ -361,21 +519,33 @@
                 <button type="submit" class="btn hero-cta-button">Get Early Access</button>
             </form>
             <p class="social-proof">No credit card required. Join the private waitlist for a 50% lifetime discount.</p>
+            <div class="hero-image-container">
+                 <img src="https://picsum.photos/seed/podcastai/600/350" alt="Conceptual image showing AI enhancing a podcast conversation" class="hero-image">
+            </div>
         </div>
     </section>
 
-    <section id="problem">
+    <section id="problem" class="bg-light">
         <div class="container">
-            <h2>The Podcast "Workflow" Is a Grind.</h2>
+            <h2 class="text-center">The Podcast "Workflow" Is a Grind.</h2>
             <p class="sub-headline text-center">You're trapped between two painful problems that kill your show's growth.</p>
-            <div class="columns">
-                <div>
+            <div class="split-section">
+                <div class="text-content">
                     <h3>The Research Trap</h3>
-                    <p>You spend <strong>4 hours</strong> on manual guest prep—skimming blogs, listening to their other interviews, scrolling LinkedIn—just to end up asking the same 5 questions they've heard all week. Your prep is exhausting, and the final interview is... <em>boring</em>.</p>
+                    <p>You spend **4 hours** on manual guest prep—skimming blogs, listening to their other interviews, scrolling LinkedIn—just to end up asking the same 5 questions they've heard all week. Your prep is exhausting, and the final interview feels... predictable.</p>
+                    <a href="#features" class="btn">See How We Fix This</a>
                 </div>
-                <div>
+                <div class="image-content">
+                    <img src="https://picsum.photos/seed/researchchaos/500/350" alt="Illustration showing messy notes and confusion during research">
+                </div>
+            </div>
+             <div class="split-section" style="margin-top: 60px;"> <div class="image-content">
+                     <img src="https://picsum.photos/seed/promotionfail/500/350" alt="Illustration showing tumbleweeds around a podcast link, representing missed promotion">
+                </div>
+                <div class="text-content">
                     <h3>The Promotion Black Hole</h3>
-                    <p>You launch the episode, send your guest a "thank you" email with a link, and... <em>nothing</em>. Your single biggest marketing opportunity (their entire audience) is completely wasted because you didn't make it easy for them to share.</p>
+                    <p>You launch the episode, send your guest a "thank you" email with a link, and... *crickets*. Your single biggest marketing opportunity (their entire audience) vanishes because you didn't equip them to easily share.</p>
+                     <a href="#features" class="btn">Learn About the Promo Kit</a>
                 </div>
             </div>
         </div>
@@ -383,53 +553,90 @@
 
     <section id="solution">
         <div class="container">
-            <h2>GuestBrief.ai Makes You a Genius Host.</h2>
-            <p class="sub-headline text-center">We are not *another* show notes tool. We are your strategic partner, fixing your workflow in two simple steps.</p>
-            <div class="steps">
-                <div>
-                    <h3>Step 1: The "Genius Brief"</h3>
-                    <p><strong>Before you record,</strong> paste your guest's LinkedIn or website URL. Our AI builds a 1-Page "Genius Brief"—analyzing their history, identifying "Tired Topics," and generating novel, deep-cut questions that lead to <em>that</em> "wow" moment.</p>
-                </div>
-                <div>
-                    <h3>Step 2: The "Promo Kit"</h3>
-                    <p><strong>After you record,</strong> upload your audio. Our AI creates the "Guest Promo Kit"—perfect show notes, a full transcript, and a "vanity package" of branded quote cards and audiograms, all pre-written into a "thank you" email that your guest is <em>excited</em> to share.</p>
-                </div>
-            </div>
+            <h2 class="text-center">GuestBrief.ai Makes You a Genius Host.</h2>
+            <p class="sub-headline text-center">We are not *another* show notes tool. We are your strategic partner, transforming your prep and promotion.</p>
+
+             <div class="split-section">
+                 <div class="image-content">
+                     <div class="dashboard-mockup">
+                          <img src="https://picsum.photos/seed/geniusbrief/500/380" alt="Mockup of the GuestBrief.ai Genius Brief interface, showing guest bio, podcast history, and novel questions">
+                         <h4>The 10-Minute "Genius Brief"</h4>
+                     </div>
+                 </div>
+                 <div class="text-content">
+                     <h3>Step 1: Uncover Hidden Insights</h3>
+                     <p>Before you record, paste your guest's LinkedIn or website URL. Our AI builds a 1-Page "Genius Brief"—analyzing their history, identifying "Tired Topics," and generating novel, deep-cut questions that spark unforgettable conversations.</p>
+                 </div>
+             </div>
+
+              <div class="split-section" style="margin-top: 60px;">
+                  <div class="text-content">
+                     <h3>Step 2: Activate Your Guest Promoter</h3>
+                      <p>After you record, upload your audio. Our AI creates the "Guest Promo Kit"—perfect show notes, a full transcript, and a "vanity package" of branded quote cards and audiograms, all pre-written into a "thank you" email that your guest is *excited* to share.</p>
+                  </div>
+                 <div class="image-content">
+                     <div class="dashboard-mockup">
+                           <img src="https://picsum.photos/seed/promokit/500/380" alt="Mockup of the GuestBrief.ai Promo Kit interface, showing generated show notes, quote cards, and audiogram preview">
+                         <h4>The "Done-for-You" Promo Kit</h4>
+                     </div>
+                 </div>
+             </div>
         </div>
     </section>
 
-    <section id="features">
+    <section id="features" class="bg-light">
         <div class="container">
-            <h2>A Toolkit for Professional Podcasters.</h2>
+            <h2 class="text-center">A Toolkit for Professional Podcasters.</h2>
             <p class="sub-headline text-center">All the tools you need. None of the clutter.</p>
             <div class="feature-grid">
                 <div class="feature-box">
+                     <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 18V7.125c0-.621.504-1.125 1.125-1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V7.5h3.375Z" /></svg>
+                    </div>
                     <h3>AI Guest Briefing</h3>
-                    <p>Turn a single URL into a 1-page tactical doc. We find their bio, recent activity, and social links so you can build instant rapport.</p>
+                    <p>Turn a single URL into a 1-page tactical doc with bio, recent activity, and social links for instant rapport.</p>
                 </div>
                 <div class="feature-box">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+                    </div>
                     <h3>Podcast History Analysis</h3>
-                    <p>Our AI finds your guest's other podcast appearances and tells you what they *always* talk about, so you can go deeper and create a truly unique episode.</p>
+                    <p>See what your guest said on *other* shows, avoid repetition, and create a truly unique episode.</p>
                 </div>
                 <div class="feature-box">
+                    <div class="feature-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                    </div>
                     <h3>"Tired Topics" Identifier</h3>
                     <p>Stop asking the same boring questions. Know what your guest is tired of talking about *before* you hit record.</p>
                 </div>
                 <div class="feature-box">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
+                    </div>
                     <h3>Novel Question Generator</h3>
-                    <p>The "secret weapon." Based on our analysis, we generate 5-10 smart, deep-cut questions that your guest has *never* been asked before.</p>
+                    <p>The "secret weapon." We generate 5-10 smart, deep-cut questions that spark genuine "wow" moments.</p>
                 </div>
                 <div class="feature-box">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-6.831c.29-.209.654-.324 1.028-.324.966 0 1.756.79 1.756 1.756v4.032a1.756 1.756 0 0 1-1.756 1.756h-9.566c-.4 1.567-.98 2.98-1.753 4.032m-.168-1.12c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566 6.831c.29.209.654.324 1.028.324.966 0 1.756-.79 1.756-1.756v-4.032a1.756 1.756 0 0 1 1.756-1.756h.001Z" /></svg>
+                    </div>
                     <h3>The "Vanity" Promo Kit</h3>
-                    <p>Turn guests into promoters. We auto-generate beautiful, branded quote cards and a 60-second "viral" audiogram clip. This is the "vanity package" they will be proud to share.</p>
+                    <p>Turn guests into promoters with branded quote cards and a 60-second "viral" audiogram clip.</p>
                 </div>
                  <div class="feature-box">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                    </div>
                     <h3>Pre-Written "Shareable" Emails</h3>
-                    <p>We draft the perfect "thank you" email to your guest, with all their promo assets and share links included. Just copy, paste, and send.</p>
+                    <p>We draft the perfect "thank you" email for your guest, including all assets and share links. Just copy, paste, send.</p>
                 </div>
                  <div class="feature-box">
+                     <div class="feature-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                     </div>
                     <h3>AI-Powered Show Notes</h3>
-                    <p>Of course, we do the essentials. Get 5 title options, an SEO-ready summary, bulleted key takeaways, and time-stamped chapters in seconds.</p>
+                    <p>Of course, we do the essentials. Get title options, SEO-ready summaries, key takeaways, and time-stamped chapters fast.</p>
                 </div>
             </div>
         </div>
@@ -437,10 +644,10 @@
 
     <section id="pricing">
         <div class="container">
-            <h2>Simple Pricing for Serious Creators.</h2>
+            <h2 class="text-center">Simple Pricing for Serious Creators.</h2>
             <p class="sub-headline text-center">
                 No complex "AI credits." No per-minute fees. Just simple, predictable pricing that scales with your show.<br>
-                <em>Pricing is not final. Join the waitlist for a <strong>50% lifetime discount</strong> on your first year.</em>
+                <em>Early access pricing. Join the waitlist for a <strong>50% lifetime discount</strong> on your first year.</em>
             </p>
             <div class="pricing-grid">
                 <div class="pricing-tier">
@@ -452,9 +659,9 @@
                         <li>AI Guest Briefings</li>
                         <li>Novel Question Generator</li>
                         <li>Full AI Promo Kit</li>
-                        <li>(Perfect for the weekly show)</li>
+                        <li>Email Support</li>
                     </ul>
-                    <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                    <a href="#cta" class="btn pricing-cta-button">Get 50% Off</a>
                 </div>
                 <div class="pricing-tier popular">
                     <h3>Pro Host</h3>
@@ -463,9 +670,10 @@
                     <ul>
                         <li><strong>15</strong> "Brief & Promo Kits" per month</li>
                         <li><em>Everything in Solo, plus:</em></li>
-                        <li><strong>Custom Branding:</strong> Add your logo</li>
+                        <li><strong>Custom Branding</strong> (Logo)</li>
+                        <li>Priority Email Support</li>
                     </ul>
-                     <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                     <a href="#cta" class="btn pricing-cta-button">Get 50% Off</a>
                 </div>
                 <div class="pricing-tier">
                     <h3>Agency / Network</h3>
@@ -476,8 +684,9 @@
                         <li><em>Everything in Pro, plus:</em></li>
                         <li><strong>3 Team Seats</strong></li>
                         <li><strong>Client Workspaces</strong></li>
+                        <li>Dedicated Account Manager</li>
                     </ul>
-                     <a href="#cta" class="btn pricing-cta-button">Join Waitlist</a>
+                     <a href="#cta" class="btn pricing-cta-button">Get 50% Off</a>
                 </div>
             </div>
         </div>
@@ -491,20 +700,20 @@
             </p>
             <form class="cta-form" id="final-waitlist-form">
                 <input type="email" id="final-email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn">Join the Waitlist</button>
+                <button type="submit" class="btn">Join the Waitlist & Lock In 50% Off</button>
             </form>
             <p class="final-text">
-                We are launching our private beta soon. Waitlist members get priority access and a <strong>50% lifetime discount.</strong>
+                Private beta launching soon. Don't miss your lifetime discount.
             </p>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2025 GuestBrief.ai | A tool for podcasters, by podcasters.</p>
+            <p>© 2025 GuestBrief.ai | Built for podcasters who obsess over quality.</p>
             <div class="social-links">
-                <a href="#" target="_blank">X/Twitter</a>
-                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank" title="GuestBrief.ai on X/Twitter">X/Twitter</a>
+                <a href="#" target="_blank" title="GuestBrief.ai on LinkedIn">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -513,34 +722,65 @@
         // Smooth scroll for all anchor links pointing to an ID on the same page
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // Check if the link is just a placeholder or actually points to an ID
                 const hrefAttribute = this.getAttribute('href');
                 if (hrefAttribute && hrefAttribute !== '#') {
                     const targetElement = document.querySelector(hrefAttribute);
                     if (targetElement) {
-                        e.preventDefault(); // Prevent default anchor click behavior
-                        targetElement.scrollIntoView({
+                        e.preventDefault();
+                        // Calculate offset for fixed navbar if needed
+                        const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20; // Added extra 20px padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
                             behavior: 'smooth'
                         });
                     }
                 } else if (hrefAttribute === '#') {
-                     e.preventDefault(); // Prevent jump to top for empty hash links
-                     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+                     e.preventDefault();
+                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             });
         });
 
         // Handle the waitlist forms (Hero and Final CTA)
         function handleWaitlistSubmit(event) {
-            event.preventDefault(); // Prevent the default form submission (page reload)
+            event.preventDefault();
             const emailInput = event.target.querySelector('input[type="email"]');
-            if (emailInput && emailInput.value) {
-                // In a real application, you would send this email to your backend here.
-                console.log('Waitlist signup attempt:', emailInput.value);
-                alert('Thank you for joining the waitlist! We will notify you soon.');
-                emailInput.value = ''; // Clear the input field after submission
-            } else {
-                 alert('Please enter a valid email address.');
+            const submitButton = event.target.querySelector('button[type="submit"]');
+
+            if (emailInput && emailInput.value && !submitButton.disabled) {
+                // Basic email validation
+                if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+                     alert('Please enter a valid email address.');
+                     return;
+                }
+
+                // Disable button to prevent multiple submissions
+                submitButton.disabled = true;
+                submitButton.textContent = 'Joining...';
+
+                // --- Simulate backend call ---
+                // In a real app, you would send emailInput.value to your server here
+                // For example: fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email: emailInput.value }) ... })
+                console.log('Waitlist signup:', emailInput.value);
+
+                setTimeout(() => { // Simulate network delay
+                    alert('Thank you for joining the GuestBrief.ai waitlist! We will notify you soon.');
+                    emailInput.value = ''; // Clear the input
+                    submitButton.disabled = false; // Re-enable button
+                    // Change button text based on which form it was
+                     if (event.target.id === 'hero-waitlist-form') {
+                         submitButton.textContent = 'Get Early Access';
+                     } else {
+                         submitButton.textContent = 'Join the Waitlist & Lock In 50% Off';
+                     }
+                }, 1000); // 1 second delay
+                 // --- End simulation ---
+
+            } else if (!emailInput.value) {
+                 alert('Please enter your email address.');
             }
         }
 
@@ -554,16 +794,28 @@
             finalForm.addEventListener('submit', handleWaitlistSubmit);
         }
 
-        // Make buttons with specific classes also scroll to the CTA section
-         document.querySelectorAll('.nav-cta-button, .hero-cta-button, .pricing-cta-button').forEach(button => {
+        // Make buttons with specific classes also smooth scroll to the CTA section
+         document.querySelectorAll('.nav-cta-button, .pricing-cta-button').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetElement = document.querySelector('#cta');
                 if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                     const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+                     const elementPosition = targetElement.getBoundingClientRect().top;
+                     const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
+                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 }
             });
          });
+         // Special case for hero button as it's already linked to the form submit
+         const heroCtaButton = document.querySelector('.hero-cta-button');
+         if (heroCtaButton && !heroCtaButton.closest('form')) { // Only add if it's NOT the form button
+             heroCtaButton.addEventListener('click', function(e) {
+                 e.preventDefault();
+                 document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' });
+             });
+         }
+
 
     </script>
 
